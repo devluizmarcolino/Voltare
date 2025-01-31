@@ -35,9 +35,9 @@
                 </a>
 
                 <div class="hidden md:flex items-center space-x-10">
-                    <a href="#" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Home</a>
+                    <a href="#home" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Home</a>
                     <a href="#" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Serviços</a>
-                    <a href="#" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Sobre</a>
+                    <a href="#sobre" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Sobre</a>
                     <a href="#" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Contato</a>
                 </div>
                 <div class="hidden md:block">
@@ -67,13 +67,13 @@
 
             <nav class="flex-1 p-6">
                 <div class="space-y-6">
-                    <a href="#" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
+                    <a href="#home" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
                         <i class='bx bx-home-alt-2 mr-3'></i>Home
                     </a>
                     <a href="#" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
                         <i class='bx bx-briefcase mr-3'></i>Serviços
                     </a>
-                    <a href="#" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
+                    <a href="#sobre" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
                         <i class='bx bx-info-circle mr-3'></i>Sobre
                     </a>
                     <a href="#" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
@@ -92,7 +92,7 @@
     </div>
 
     <main>
-        <section class="relative min-h-screen flex items-center pt-24 px-6">
+        <section class="relative min-h-screen flex items-center pt-24 px-6" id="home">
     <div class="container mx-auto">
         <div class="relative mx-auto flex max-w-3xl flex-col items-center">
             <div class="mb-8 flex">
@@ -124,6 +124,72 @@
                 <button class="inline-flex items-center justify-center rounded-xl text-sm font-medium bg-primary/10 text-secondary hover:bg-primary/20 transition-colors h-12 px-6 py-2">
                     Conheça Nosso Trabalho
                 </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section class="relative py-24 px-6 overflow-hidden" id="sobre">
+    <div class="container mx-auto">
+        <!-- Section Header -->
+        <div class="max-w-2xl mx-auto text-center mb-16">
+            <div class="mb-6 inline-flex items-center justify-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-secondary">
+                <span class="mr-2"><i class='bx bx-bulb'></i></span>
+                Nossos Diferenciais
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-medium text-secondary mb-4">
+                Soluções que fazem a 
+                <span class="animate-text-gradient inline-flex bg-gradient-to-r from-primary via-secondary to-tertiary bg-[200%_auto] bg-clip-text leading-tight text-transparent">
+                    diferença
+                </span>
+            </h2>
+            <p class="text-secondary/80">
+                Combinamos expertise técnica com criatividade para entregar resultados excepcionais
+            </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature Card 1 -->
+            <div class="group relative overflow-hidden rounded-2xl bg-ghost p-8 hover:shadow-lg transition-shadow">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                    <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-secondary">
+                        <i class='bx bx-code-alt text-2xl'></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-secondary mb-3">Desenvolvimento Web</h3>
+                    <p class="text-secondary/80">
+                        Sites e aplicações web modernas, responsivas e otimizadas para performance
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature Card 2 -->
+            <div class="group relative overflow-hidden rounded-2xl bg-ghost p-8 hover:shadow-lg transition-shadow">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                    <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-secondary">
+                        <i class='bx bx-data text-2xl'></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-secondary mb-3">Sistemas Personalizados</h3>
+                    <p class="text-secondary/80">
+                        Desenvolvimento de sistemas sob medida para automatizar e otimizar seus processos
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature Card 3 -->
+            <div class="group relative overflow-hidden rounded-2xl bg-ghost p-8 hover:shadow-lg transition-shadow">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative">
+                    <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-secondary">
+                        <i class='bx bx-line-chart text-2xl'></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-secondary mb-3">Marketing Digital</h3>
+                    <p class="text-secondary/80">
+                        Estratégias personalizadas para aumentar sua presença online e conversões
+                    </p>
+                </div>
             </div>
         </div>
     </div>
