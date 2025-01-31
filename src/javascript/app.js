@@ -100,3 +100,31 @@ class MobileMenuController {
 document.addEventListener("DOMContentLoaded", () => {
   const mobileMenu = new MobileMenuController();
 });
+
+function animateProjectCards() {
+    const cards = document.querySelectorAll('.grid > div');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const fadeInCards = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(fadeInCards, observerOptions);
+
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'all 0.6s ease-out';
+        observer.observe(card);
+    });
+}
