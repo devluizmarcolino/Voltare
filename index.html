@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .menu-slide-enter {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        .menu-slide-enter-active {
+            transform: translateX(0);
+            opacity: 1;
+            transition: all 0.4s ease-out;
+        }
+        .menu-item-enter {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        .menu-item-visible {
+            transform: translateY(0);
+            opacity: 1;
+            transition: all 0.3s ease-out;
+        }
+        .backdrop-blur {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9CCBD5',
+                        secondary: '#101b2d',
+                        tertiary: '#5a7b82',
+                        accent: '#e3e93a',
+                        ghost: '#fafbfc',
+                        ivory: '#f5f39b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-ghost text-secondary overflow-x-hidden">
+    <!-- Grid Background -->
+    <div class="fixed inset-0 -z-10 h-full w-full bg-ghost bg-[linear-gradient(to_right,#9CCBD5_1px,transparent_1px),linear-gradient(to_bottom,#9CCBD5_1px,transparent_1px)] bg-[size:6rem_4rem] opacity-10"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 py-6">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-secondary hover:text-tertiary transition-colors">
+                    Voltare
+                </a>
+
+                <!-- Menu Items -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Home</a>
+                    <a href="#" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Serviços</a>
+                    <a href="#" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Sobre</a>
+                    <a href="#" class="text-sm font-medium text-secondary hover:text-tertiary transition-colors">Contato</a>
+                </div>
+
+                <!-- Contact Button -->
+                <div class="hidden md:block">
+                    <button class="bg-secondary text-ghost px-5 py-2 rounded-full text-sm font-medium hover:bg-tertiary transition-colors">
+                        Iniciar Projeto
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-secondary" id="mobile-menu-button">
+                    <i class='bx bx-menu text-2xl'></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 invisible">
+        <!-- Overlay com blur -->
+        <div class="absolute inset-0 bg-secondary/20 backdrop-blur opacity-0 transition-opacity duration-500" id="menu-overlay"></div>
+        
+        <!-- Menu Container -->
+        <div class="absolute top-0 right-0 w-full sm:w-80 h-full bg-ghost/95 shadow-2xl menu-slide-enter flex flex-col">
+            <!-- Menu Header -->
+            <div class="flex justify-between items-center p-6 border-b border-secondary/10">
+                <span class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Voltare
+                </span>
+                <button class="text-secondary p-2 hover:bg-secondary/5 rounded-full transition-colors" id="mobile-menu-close">
+                    <i class='bx bx-x text-2xl'></i>
+                </button>
+            </div>
+
+            <!-- Menu Items -->
+            <nav class="flex-1 p-6">
+                <div class="space-y-6">
+                    <a href="#" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
+                        <i class='bx bx-home-alt-2 mr-3'></i>Home
+                    </a>
+                    <a href="#" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
+                        <i class='bx bx-briefcase mr-3'></i>Serviços
+                    </a>
+                    <a href="#" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
+                        <i class='bx bx-info-circle mr-3'></i>Sobre
+                    </a>
+                    <a href="#" class="menu-item-enter block text-lg font-medium text-secondary hover:text-tertiary transition-all py-2 px-4 rounded-lg hover:bg-primary/5">
+                        <i class='bx bx-envelope mr-3'></i>Contato
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Bottom Actions -->
+            <div class="p-6 border-t border-secondary/10">
+                <button class="w-full bg-secondary text-ghost px-6 py-3 rounded-xl font-medium hover:bg-tertiary transition-colors flex items-center justify-center">
+                    <i class='bx bx-rocket mr-2'></i>
+                    Iniciar Projeto
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="src/javascript/app.js"></script>
+</body>
+</html>

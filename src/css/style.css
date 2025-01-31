@@ -1,0 +1,21 @@
+.menu-slide-enter {
+    transform: translateX(100%);
+    opacity: 0;
+}
+.menu-slide-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 0.4s ease-out;
+}
+.menu-item-enter {
+    transform: translateY(20px);
+    opacity: 0;
+}
+.menu-item-visible {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.3s ease-out;
+}
+.backdrop-blur {
+    backdrop-filter: blur(8px);
+}
