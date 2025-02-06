@@ -3,13 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Mensagens</title>
+    <title>Voltare - Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9CCBD5',
+                        secondary: '#101b2d',
+                        tertiary: '#5a7b82',
+                        accent: '#e3e93a',
+                        ghost: '#fafbfc',
+                        ivory: '#f5f39b',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-ghost text-secondary overflow-x-hidden">
+    <div class="fixed inset-0 -z-10 h-full w-full bg-ghost bg-[linear-gradient(to_right,#9CCBD5_1px,transparent_1px),linear-gradient(to_bottom,#9CCBD5_1px,transparent_1px)] bg-[size:6rem_4rem] opacity-10"></div>
+
     <!-- Alert Component -->
-    <div id="customAlert" class="fixed top-4 right-4 max-w-sm w-full hidden transform transition-all duration-300 opacity-0 translate-y-[-1rem]">
-        <div class="bg-white border-l-4 border-red-500 rounded-lg shadow-lg p-4">
+    <div id="customAlert" class="fixed top-4 right-4 max-w-sm w-full hidden transform transition-all duration-300 opacity-0 translate-y-[-1rem] z-50">
+        <div class="bg-white rounded-xl shadow-lg p-4 border-l-4 border-red-500">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
                     <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
@@ -24,69 +42,76 @@
     </div>
 
     <!-- Confirmation Dialog -->
-    <div id="confirmDialog" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
+    <div id="confirmDialog" class="fixed inset-0 bg-secondary/50 backdrop-blur-sm hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-xl">
             <h3 class="text-lg font-medium mb-4" id="confirmMessage"></h3>
             <div class="flex justify-end gap-3">
-                <button onclick="hideConfirmDialog(false)" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">
+                <button onclick="hideConfirmDialog(false)" class="px-4 py-2 bg-ghost text-secondary rounded-xl hover:bg-primary/10 transition-colors">
                     Cancelar
                 </button>
-                <button onclick="hideConfirmDialog(true)" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                <button onclick="hideConfirmDialog(true)" class="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-colors">
                     Confirmar
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Tela de Login -->
-    <div id="loginScreen" class="min-h-screen flex items-center justify-center">
+    <!-- Login Screen -->
+    <div id="loginScreen" class="min-h-screen flex items-center justify-center px-4">
         <div class="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full">
-            <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
-            <input 
-                type="password" 
-                id="senha"
-                placeholder="Digite sua senha" 
-                class="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-colors mb-4"
-            >
-            <button 
-                onclick="fazerLogin()"
-                class="w-full bg-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors"
-            >
-                Entrar
-            </button>
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-secondary mb-2">Voltare Admin</h2>
+                <p class="text-secondary/60">Acesse o painel administrativo</p>
+            </div>
+            <div class="space-y-4">
+                <input 
+                    type="password" 
+                    id="senha"
+                    placeholder="Digite sua senha" 
+                    class="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"
+                >
+                <button 
+                    onclick="fazerLogin()"
+                    class="w-full bg-secondary text-ghost px-6 py-3 rounded-xl font-medium hover:bg-tertiary transition-colors"
+                >
+                    Entrar
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- Tela de Mensagens -->
-    <div id="messagesScreen" class="hidden container mx-auto px-4 py-8">
-        <div class="bg-white rounded-2xl shadow-lg p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold">Mensagens Recebidas</h2>
-                <button 
-                    onclick="fazerLogout()" 
-                    class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
-                >
-                    Sair
-                </button>
-            </div>
-            <div id="messagesList" class="space-y-4">
-                <!-- Mensagens serão inseridas aqui -->
+    <!-- Messages Screen -->
+    <div id="messagesScreen" class="hidden min-h-screen py-8 px-4">
+        <div class="container mx-auto">
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-secondary">Mensagens Recebidas</h2>
+                        <p class="text-secondary/60">Gerencie as mensagens dos seus contatos</p>
+                    </div>
+                    <button 
+                        onclick="fazerLogout()" 
+                        class="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-colors"
+                    >
+                        Sair
+                    </button>
+                </div>
+                <div id="messagesList" class="space-y-4">
+                    <!-- Messages will be inserted here -->
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Senha para acesso (mude para sua senha desejada)
-        const SENHA_CORRETA = "123456";
+        const SENHA_CORRETA = "2244668899lL!";
         let confirmResolve = null;
 
-        // Função para mostrar alerta customizado
         function showAlert(message, duration = 3000) {
             const alert = document.getElementById('customAlert');
             document.getElementById('alertMessage').textContent = message;
             
             alert.classList.remove('hidden');
-            // Força um reflow para garantir que a transição funcione
             alert.offsetHeight;
             alert.classList.remove('opacity-0', 'translate-y-[-1rem]');
             
@@ -98,7 +123,6 @@
             }, duration);
         }
 
-        // Função para mostrar diálogo de confirmação
         function showConfirmDialog(message) {
             return new Promise((resolve) => {
                 confirmResolve = resolve;
@@ -107,7 +131,6 @@
             });
         }
 
-        // Função para esconder diálogo de confirmação
         function hideConfirmDialog(result) {
             document.getElementById('confirmDialog').classList.add('hidden');
             if (confirmResolve) {
@@ -116,27 +139,27 @@
             }
         }
 
-        // Função de login
         function fazerLogin() {
-            const senha = document.getElementById('senha').value;
-            
-            if (senha === SENHA_CORRETA) {
-                document.getElementById('loginScreen').classList.add('hidden');
-                document.getElementById('messagesScreen').classList.remove('hidden');
-                carregarMensagens();
-            } else {
-                showAlert('Senha incorreta!');
-            }
-        }
+    const senha = document.getElementById('senha').value;
+    
+    if (senha === SENHA_CORRETA) {
+        localStorage.setItem('adminLoggedIn', 'true');
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('messagesScreen').classList.remove('hidden');
+        carregarMensagens();
+    } else {
+        showAlert('Senha incorreta! Tente novamente.');
+    }
+}
 
-        // Função de logout 
         function fazerLogout() {
-            document.getElementById('loginScreen').classList.remove('hidden');
-            document.getElementById('messagesScreen').classList.add('hidden');
-            document.getElementById('senha').value = '';
-        }
+    localStorage.removeItem('adminLoggedIn');
+    document.getElementById('loginScreen').classList.remove('hidden');
+    document.getElementById('messagesScreen').classList.add('hidden');
+    document.getElementById('senha').value = '';
+}
 
-        // Função para remover mensagem
+
         async function removerMensagem(index) {
             const confirmed = await showConfirmDialog('Tem certeza que deseja remover esta mensagem?');
             if (confirmed) {
@@ -148,25 +171,33 @@
             }
         }
 
-        // Função para carregar mensagens
         function carregarMensagens() {
             const messages = JSON.parse(localStorage.getItem('formMessages') || '[]');
             const messagesList = document.getElementById('messagesList');
             
             if (messages.length === 0) {
-                messagesList.innerHTML = '<p class="text-gray-500 text-center py-4">Nenhuma mensagem recebida ainda.</p>';
+                messagesList.innerHTML = '<div class="text-center py-8"><p class="text-secondary/60">Nenhuma mensagem recebida ainda.</p></div>';
                 return;
             }
 
+            function verificarLogin() {
+    const isLoggedIn = localStorage.getItem('adminLoggedIn');
+    if (isLoggedIn === 'true') {
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('messagesScreen').classList.remove('hidden');
+        carregarMensagens();
+    }
+}
+
             messagesList.innerHTML = messages.reverse().map((msg, index) => `
-                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
-                    <div class="flex justify-between items-start mb-4">
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow bg-ghost">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
                         <div>
-                            <h3 class="font-bold text-lg">${msg.subject}</h3>
-                            <p class="text-gray-600">${msg.name} (${msg.email})</p>
+                            <h3 class="font-bold text-lg text-secondary">${msg.subject}</h3>
+                            <p class="text-secondary/60">${msg.name} (${msg.email})</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm text-gray-500">
+                        <div class="flex items-center gap-4">
+                            <span class="text-sm text-secondary/60">
                                 ${new Date(msg.date).toLocaleString()}
                             </span>
                             <button 
@@ -177,7 +208,7 @@
                             </button>
                         </div>
                     </div>
-                    <p class="text-gray-700">${msg.message}</p>
+                    <p class="text-secondary/80 whitespace-pre-wrap">${msg.message}</p>
                 </div>
             `).join('');
         }
@@ -186,6 +217,7 @@
             if (e.key === 'Enter') {
                 fazerLogin();
             }
+            document.addEventListener('DOMContentLoaded', verificarLogin);
         });
     </script>
 </body>
