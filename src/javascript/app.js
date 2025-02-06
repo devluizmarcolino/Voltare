@@ -128,3 +128,125 @@ function animateProjectCards() {
         observer.observe(card);
     });
 }
+// Seleciona o formulário
+const contactForm = document.getElementById('contactForm');
+
+// Adiciona o evento de submit ao formulário
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Previne o comportamento padrão do formulário
+
+    // Captura os valores dos campos
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value,
+        date: new Date().toISOString() // Adiciona a data atual
+    };
+
+    // Recupera mensagens existentes do localStorage
+    const existingMessages = JSON.parse(localStorage.getItem('formMessages') || '[]');
+    
+    // Adiciona a nova mensagem ao array
+    existingMessages.push(formData);
+    
+    // Salva o array atualizado no localStorage
+    localStorage.setItem('formMessages', JSON.stringify(existingMessages));
+
+    // Limpa o formulário
+    contactForm.reset();
+
+    // Mostra mensagem de sucesso
+    alert('Mensagem enviada com sucesso!');
+});
+
+// Adiciona validação básica aos campos
+const inputs = contactForm.querySelectorAll('input, textarea');
+inputs.forEach((input) => {
+  input.addEventListener("invalid", function (e) {
+    e.preventDefault();
+    this.classList.add("border-red-500");
+    showCustomAlert(
+      "Por favor, preencha todos os campos corretamente.",
+      "Erro!"
+    );
+  });
+
+  input.addEventListener("input", function () {
+    if (this.validity.valid) {
+      this.classList.remove("border-red-500");
+    }
+  });
+});
+
+// Adicione o elemento ao body
+document.body.insertAdjacentHTML('beforeend', alertHTML);
+
+// Função para mostrar o alert
+function showCustomAlert(message, title = 'Sucesso!') {
+    const alertElement = document.getElementById('custom-alert');
+    const overlay = document.getElementById('alert-overlay');
+    const alertBox = alertElement.querySelector('.relative');
+    const titleElement = document.getElementById('alert-title');
+    const messageElement = document.getElementById('alert-message');
+
+    // Atualiza o conteúdo
+    titleElement.textContent = title;
+    messageElement.textContent = message;
+
+    // Mostra o alert
+    alertElement.classList.remove('invisible');
+    setTimeout(() => {
+        overlay.classList.add('opacity-100');
+        alertBox.classList.remove('translate-y-8', 'opacity-0');
+    }, 10);
+
+    // Adiciona listener para fechar com ESC
+    document.addEventListener('keydown', handleEscapeKey);
+}
+
+// Função para fechar o alert
+function closeCustomAlert() {
+    const alertElement = document.getElementById('custom-alert');
+    const overlay = document.getElementById('alert-overlay');
+    const alertBox = alertElement.querySelector('.relative');
+
+    overlay.classList.remove('opacity-100');
+    alertBox.classList.add('translate-y-8', 'opacity-0');
+
+    setTimeout(() => {
+        alertElement.classList.add('invisible');
+    }, 300);
+
+    // Remove o listener do ESC
+    document.removeEventListener('keydown', handleEscapeKey);
+}
+
+// Função para lidar com a tecla ESC
+function handleEscapeKey(e) {
+    if (e.key === 'Escape') {
+        closeCustomAlert();
+    }
+}
+
+// Modifique o evento de submit do formulário para usar o novo alert
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value,
+        date: new Date().toISOString()
+    };
+
+    const existingMessages = JSON.parse(localStorage.getItem('formMessages') || '[]');
+    existingMessages.push(formData);
+    localStorage.setItem('formMessages', JSON.stringify(existingMessages));
+
+    contactForm.reset();
+
+    // Usa o novo sistema de alert
+    showCustomAlert('Sua mensagem foi enviada com sucesso! Entraremos em contato em breve.');
+});
