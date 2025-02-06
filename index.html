@@ -446,8 +446,93 @@
         </div>
     </div>
 </section>
-    </main>
+<section class="relative py-24 px-6 bg-primary/5">
+    <div class="container mx-auto">
+        <!-- Cabeçalho da Seção -->
+        <div class="max-w-2xl mx-auto text-center mb-16">
+            <div class="mb-6 inline-flex items-center justify-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-secondary">
+                <span class="mr-2"><i class='bx bx-help-circle'></i></span>
+                FAQ
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-medium text-secondary mb-4">
+                Perguntas 
+                <span class="animate-text-gradient inline-flex bg-gradient-to-r from-primary via-secondary to-tertiary bg-[200%_auto] bg-clip-text leading-tight text-transparent">
+                    Frequentes
+                </span>
+            </h2>
+            <p class="text-secondary/80">
+                Encontre respostas para as dúvidas mais comuns sobre nossos serviços
+            </p>
+        </div>
 
+        <!-- Acordeão de Perguntas -->
+        <div class="max-w-3xl mx-auto space-y-4" id="faq-accordion">
+            <!-- Pergunta 1 -->
+            <div x-data="{ open: false }" class="faq-item group relative overflow-hidden rounded-2xl bg-ghost hover:shadow-lg transition-shadow">
+                <button @click="open = !open" class="faq-button w-full p-8 text-left flex justify-between items-center">
+                    <h3 class="text-xl font-medium text-secondary">Quanto tempo leva para desenvolver um projeto?</h3>
+                    <i class='bx bx-chevron-down text-2xl text-secondary transition-transform' :class="{ 'rotate-180': open }"></i>
+                </button>
+                <div x-show="open" x-collapse class="px-8 pb-8">
+                    <p class="text-secondary/80">
+                        O prazo varia de acordo com a complexidade do projeto. Sites institucionais geralmente levam de 2 a 4 semanas, enquanto sistemas mais complexos podem levar de 2 a 6 meses. Fornecemos um cronograma detalhado após a análise dos requisitos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div x-data="{ open: false }" class="faq-item group relative overflow-hidden rounded-2xl bg-ghost hover:shadow-lg transition-shadow">
+                <button @click="open = !open" class="faq-button w-full p-8 text-left flex justify-between items-center">
+                    <h3 class="text-xl font-medium text-secondary">Quais são as formas de pagamento?</h3>
+                    <i class='bx bx-chevron-down text-2xl text-secondary transition-transform' :class="{ 'rotate-180': open }"></i>
+                </button>
+                <div x-show="open" x-collapse class="px-8 pb-8">
+                    <p class="text-secondary/80">
+                        Aceitamos diversas formas de pagamento, incluindo PIX e cartão de crédito (parcelamento em até 12x). O projeto pode ser dividido em etapas com pagamentos progressivos conforme as entregas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div x-data="{ open: false }" class="faq-item group relative overflow-hidden rounded-2xl bg-ghost hover:shadow-lg transition-shadow">
+                <button @click="open = !open" class="faq-button w-full p-8 text-left flex justify-between items-center">
+                    <h3 class="text-xl font-medium text-secondary">O site será responsivo para dispositivos móveis?</h3>
+                    <i class='bx bx-chevron-down text-2xl text-secondary transition-transform' :class="{ 'rotate-180': open }"></i>
+                </button>
+                <div x-show="open" x-collapse class="px-8 pb-8">
+                    <p class="text-secondary/80">
+                        Sim! Todos os nossos projetos são desenvolvidos com design responsivo, garantindo uma excelente experiência em smartphones, tablets e desktops. Utilizamos as melhores práticas de desenvolvimento mobile-first.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div x-data="{ open: false }" class="faq-item group relative overflow-hidden rounded-2xl bg-ghost hover:shadow-lg transition-shadow">
+                <button @click="open = !open" class="faq-button w-full p-8 text-left flex justify-between items-center">
+                    <h3 class="text-xl font-medium text-secondary">Oferecem suporte após a entrega do projeto?</h3>
+                    <i class='bx bx-chevron-down text-2xl text-secondary transition-transform' :class="{ 'rotate-180': open }"></i>
+                </button>
+                <div x-show="open" x-collapse class="px-8 pb-8">
+                    <p class="text-secondary/80">
+                        Sim, oferecemos 1 mês de suporte gratuito após a entrega do projeto para ajustes e correções. Após esse período, disponibilizamos planos de manutenção mensais que incluem atualizações, backups e melhorias contínuas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Final -->
+        <div class="mt-16 text-center">
+            <p class="text-secondary/80 mb-6">Não encontrou o que procurava?</p>
+            <a href="#contato" class="inline-flex items-center justify-center rounded-xl text-sm font-medium bg-secondary text-ghost hover:bg-tertiary transition-colors h-12 px-6 py-2">
+                Fale Conosco
+                <i class='bx bx-right-arrow-alt pl-2 text-xl'></i>
+            </a>
+        </div>
+    </div>
+</section>
+    </main>
     <script src="src/javascript/app.js"></script>
+    <script src="src/javascript/faq.js"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
 </body>
 </html>
