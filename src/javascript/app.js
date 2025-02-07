@@ -250,3 +250,27 @@ contactForm.addEventListener('submit', function(e) {
     // Usa o novo sistema de alert
     showCustomAlert('Sua mensagem foi enviada com sucesso! Entraremos em contato em breve.');
 });
+
+// Seleciona o elemento nav
+const nav = document.querySelector('nav');
+
+// Função para verificar o scroll e adicionar/remover classe
+function checkScroll() {
+    // Verifica se o scroll é maior que 0
+    if (window.scrollY > 0) {
+        // Adiciona as classes para background branco e sombra
+        nav.classList.add('bg-white', 'shadow-lg');
+        
+        // Garante que a transição seja suave
+        nav.style.transition = 'background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out';
+    } else {
+        // Remove as classes quando voltar ao topo
+        nav.classList.remove('bg-white', 'shadow-lg');
+    }
+}
+
+// Adiciona o evento de scroll à janela
+window.addEventListener('scroll', checkScroll);
+
+// Verifica o estado inicial ao carregar a página
+document.addEventListener('DOMContentLoaded', checkScroll);
