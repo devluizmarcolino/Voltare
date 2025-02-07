@@ -29,3 +29,7 @@
     .animate-text-gradient {
         animation: text-gradient 3s linear infinite;
     }
+
+    html {
+        scroll-behavior: smooth;
+    }
